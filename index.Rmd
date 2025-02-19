@@ -1,0 +1,59 @@
+---
+title: "My Sophisticated Analysis"
+author: "Lo"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+```
+
+## Here will be my really eye-catching title I will come up with very soon, mark my words {data-width="650"}
+
+### Hold your horses for you will be absolutely amazed by my computational skills
+
+```{r}
+aisc2024 <- read_csv("C:/Users/Gebruiker/Desktop/computational musicology/CompMusic/aisc2024.csv")
+aisc2024 |>                   # Start with the data
+  ggplot(                     # Set up the plot.
+    aes(
+      x = valence,
+      y = arousal,
+      size = danceability,
+      colour = tempo
+    )
+  ) +
+  geom_point() +              # Scatter plot.
+  geom_rug(linewidth = 0.1) + # Add 'fringes' to show data distribution.
+    scale_x_continuous(         # Fine-tune the x axis.
+    limits = c(3, 4.5),
+    breaks = c(3, 3.5, 4, 4.5), # Specify grid lines
+    minor_breaks = NULL       # Remove 'minor' grid lines.
+  ) +
+  scale_y_continuous(         # Fine-tune the y axis in the same way.
+    limits = c(3.5, 4.5),
+    breaks = c(3.5, 4, 4.5),
+    minor_breaks = NULL
+  ) +
+  scale_colour_viridis_c() +  # Use the popular viridis colour palette.
+  scale_size_continuous(      # Fine-tune the sizes of each point.
+    trans = "exp",            # Use an exp transformation to emphasise loud..
+    guide = "none"            # Remove the legend for size.
+  ) +
+  theme_light() +             # Use a simpler theme.
+  labs(                       # Make the titles nice.
+    x = "Valence",
+    y = "Arousal",
+    colour = "Tempo"
+  )
+ggplotly()
+```
+
+***
+
+I know... How fascinating! I am indeed so good at analyzing this amazing innovative plot.
