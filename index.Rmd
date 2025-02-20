@@ -13,9 +13,19 @@ library(ggplot2)
 library(plotly)
 ```
 
-## Here will be my really eye-catching title I will come up with very soon, mark my words {data-width="650"}
+## Here will be my really eye-catching title I will come up with very soon {data-width="650"}
 
-### Hold your horses for you will be absolutely amazed by my computational skills
+### Temporary Introduction Tab Title
+
+First Track
+
+This is my own music. I composed it early 2024 for a saxophone quartet (soprano, alto, tenor, bass). It is the first movement of a larger 10 minute piece called The Water Bellows. It follows the story of a ship which meets an unfortunate end, inspired by the real-life HMAS Sydney II tragedy whose memorial I visited in Geraldton, Australia. This recording is an extract from the performance played in the Eindhoven concert hall.
+
+Second Track
+
+Also my own music. Composed in early 2024 as well for a theater collective in Tilburg called EELT. They did a collaboration with the women’s emancipation center in Tilburg called Feniks and I was lucky enough to be asked to write an atmospheric piece to accompany their theater and dance performance. The sounds used in the piece are recorded audio from instruments but also locations, such as train stations. They were then processed in a DAW.
+
+### Prepare to be amazed by this brand new, never before seen graph!
 
 ```{r}
 aisc2024 <- read_csv("C:/Users/Gebruiker/Desktop/computational musicology/CompMusic/aisc2024.csv")
@@ -54,6 +64,10 @@ aisc2024 |>                   # Start with the data
 ggplotly()
 ```
 
-***
+------------------------------------------------------------------------
 
-I know... How fascinating! I am indeed so good at analyzing this amazing innovative plot.
+I know... How fascinating!
+
+### Temporary Conclusion Tab Title
+
+Here will be my final conclusion on my visualisations.
