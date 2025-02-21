@@ -13,7 +13,7 @@ library(ggplot2)
 library(plotly)
 ```
 
-## Here will be my really eye-catching title I will come up with very soon {data-width="650"}
+## Here will be my really eye-catching title {data-width="650"}
 
 ### Temporary Introduction Tab Title
 
@@ -25,11 +25,11 @@ Second Track
 
 Also my own music. Composed in early 2024 as well for a theater collective in Tilburg called EELT. They did a collaboration with the women’s emancipation center in Tilburg called Feniks and I was lucky enough to be asked to write an atmospheric piece to accompany their theater and dance performance. The sounds used in the piece are recorded audio from instruments but also locations, such as train stations. They were then processed in a DAW.
 
-### Prepare to be amazed by this brand new, never before seen graph!
+### Here is my class corpus visualisation
 
 ```{r}
-aisc2024 <- read_csv("C:/Users/Gebruiker/Desktop/computational musicology/CompMusic/aisc2024.csv")
-aisc2024 |>                   # Start with the data
+compmus2025 <- read_csv("C:/Users/Gebruiker/Downloads/compmus2025.csv")
+compmus2025 |>                   # Start with the data
   ggplot(                     # Set up the plot.
     aes(
       x = valence,
@@ -38,16 +38,17 @@ aisc2024 |>                   # Start with the data
       colour = tempo
     )
   ) +
-  geom_point() +              # Scatter plot.
+  geom_point() +  # Scatter plot.
+  geom_smooth() +
   geom_rug(linewidth = 0.1) + # Add 'fringes' to show data distribution.
     scale_x_continuous(         # Fine-tune the x axis.
-    limits = c(3, 4.5),
-    breaks = c(3, 3.5, 4, 4.5), # Specify grid lines
+    limits = c(3, 6.5),
+    breaks = c(3, 4, 5, 6, 7), # Specify grid lines
     minor_breaks = NULL       # Remove 'minor' grid lines.
   ) +
   scale_y_continuous(         # Fine-tune the y axis in the same way.
-    limits = c(3.5, 4.5),
-    breaks = c(3.5, 4, 4.5),
+    limits = c(3, 8),
+    breaks = c(3, 4, 5, 6, 7, 8),
     minor_breaks = NULL
   ) +
   scale_colour_viridis_c() +  # Use the popular viridis colour palette.
@@ -66,7 +67,7 @@ ggplotly()
 
 ------------------------------------------------------------------------
 
-I know... How fascinating!
+Here I will add a text to locate my tracks and analyze this upwards trend.
 
 ### Temporary Conclusion Tab Title
 
