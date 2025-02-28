@@ -1,5 +1,5 @@
 ---
-title: "My Sophisticated Analysis"
+title: "The Digital Against the Acoustic"
 author: "Lo"
 output: 
   flexdashboard::flex_dashboard:
@@ -15,7 +15,7 @@ library(rjson)
 source("compmus.R")
 ```
 
-## Here will be my really eye-catching title {data-width="650"}
+## The Digital Against the Acoustic {data-width="650"}
 
 ### Temporary Introduction Tab Title
 
@@ -94,7 +94,7 @@ Here I will add a text to locate my tracks and analyze this upwards trend.
 
 ***
 
-Analysis of the chroma
+What is most interesting to note here is that my piece starts with an ostinato of G, clearly being shown in the chromagram. We can also see that the tonality remains in the same key where the I chord of the key (Gmajor) is dominant (G, B, D). We also see mediantics at play with the E minor chord being present.
 
 ### Here is a chromagram for my second track
 
@@ -119,7 +119,7 @@ Analysis of the chroma
 
 ***
 
-Analysis of the chroma
+This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument).
 
 ### Here is a Cepstrogram 1
 
@@ -139,7 +139,7 @@ Analysis of the chroma
 
 ***
 
-Analysis of the cepstrogram
+Analysis of the cepstrogram. Although included for homework this week, I will possibly only keep the chromagram.
 
 ### Here is a Cepstrogram 2
 
@@ -159,7 +159,7 @@ Analysis of the cepstrogram
 
 ***
 
-Analysis of the cepstrogram
+Analysis of the cepstrogram. Although included for homework this week, I will possibly only keep the chromagram.
 
 ### Here is a SSM Chroma 1
 
@@ -179,7 +179,7 @@ Analysis of the cepstrogram
 
 ***
 
-Analysis of the SSM
+I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.
 
 ### Here is a SSM Timbre 1
 
@@ -199,7 +199,7 @@ Analysis of the SSM
 
 ***
 
-Analysis of the SSM
+This makes a lot of sense. The piece is a sax quartet so there is not much that changes in terms of timbre. Here we can again also see that ostinato on G at the beginning, highlighted by the completely similarity of that one note repeating as that section is black at the start.
 
 ### Here is a SSM Chroma 2
 
@@ -218,8 +218,7 @@ Analysis of the SSM
 ```
 
 ***
-
-Analysis of the SSM
+Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts.
 
 ### Here is a SSM Timbre 2
 
@@ -239,7 +238,7 @@ Analysis of the SSM
 
 ***
 
-Analysis of the SSM
+This matrix is intriguing because it doesn't see any of the various sampled outside train sounds as different from one another. It seems because they're all mechanical sounding or in the same range of pitch that they resemble one another.
 
 ### Temporary Conclusion Tab Title
 
