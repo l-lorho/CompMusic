@@ -176,7 +176,7 @@ Here I will add a text to locate my tracks and analyze this upwards trend.
 
 ------------------------------------------------------------------------
 
-What is most interesting to note here is that my piece starts with an ostinato of G, clearly being shown in the chromagram. We can also see that the tonality remains in the same key where the I chord of the key (Gmajor) is dominant (G, B, D). We also see mediantics at play with the E minor chord being present.
+What is most interesting to note here is that my piece starts with an ostinato of G, clearly being shown in the chromagram. We can also see that the tonality remains in the same key where the I chord of the key (Gmajor) is dominant (G, B, D). We also see mediantics at play with the E minor chord being present.G# is present sometimes in the second half of the piece. I am wondering whether it could be that as the instruments warmed up when they played the piece, that the tuning went up and therefore G could get mistaken for G#.
 
 ### Here is a chromagram for my second track
 
@@ -201,7 +201,7 @@ What is most interesting to note here is that my piece starts with an ostinato o
 
 ------------------------------------------------------------------------
 
-This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument).
+This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument). when I played the instrument, I mostly taped a bunch of different notes but it seemed that this was interpreted here as primarily a G#. I wonder if this is because most of the notes had overtones that evoked G# too.
 
 ### Here is a SSM Chroma 1
 
@@ -221,7 +221,7 @@ This is super interesting because this track is mostly atmospheric sounds record
 
 ------------------------------------------------------------------------
 
-I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.
+I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.The beginning and end are clearly dark. This is because the beginning has that G ostinato and the end of the piece includes repeating open fifths thrice.
 
 ### Here is a SSM Timbre 1
 
@@ -241,7 +241,7 @@ I find this interesting because the piece does include a lot of repeats yet the 
 
 ------------------------------------------------------------------------
 
-This makes a lot of sense. The piece is a sax quartet so there is not much that changes in terms of timbre. Here we can again also see that ostinato on G at the beginning, highlighted by the completely similarity of that one note repeating as that section is black at the start.
+This makes a lot of sense. The piece is a sax quartet so there is not much that changes in terms of timbre. Here we can again also see that ostinato on G at the beginning, highlighted by the completely similarity of that one note repeating as that section is black at the start. There is some lighter sections, possibly when the other saxophones start joining. In the second half, they all play all the time which is why it then settles into dark quickly.
 
 ### Here is a SSM Chroma 2
 
@@ -261,7 +261,7 @@ This makes a lot of sense. The piece is a sax quartet so there is not much that 
 
 ------------------------------------------------------------------------
 
-Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts.
+Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. I have not been able to find in the audio what causes this similarity to happen. I wonder if I maybe directly copied a part of my piece to this section and that I've forgotten that I've done it but the computer recognises this segment from earlier.
 
 ### Here is a SSM Timbre 2
 
@@ -281,7 +281,7 @@ Here we see the same thing happen as with the chromagram where the novelty in ye
 
 ------------------------------------------------------------------------
 
-This matrix is intriguing because it doesn't see any of the various sampled outside train sounds as different from one another. It seems because they're all mechanical sounding or in the same range of pitch that they resemble one another.
+This matrix is intriguing because it doesn't see any of the various sampled outside train sounds as different from one another. It seems because they're all mechanical sounding or in the same range of pitch that they resemble one another. Funnily enough, in the same place as the dark square from the SSM for chroma, there's a lighter patch in the timbre SSM.
 
 ### Chordogram
 
@@ -301,6 +301,14 @@ This matrix is intriguing because it doesn't see any of the various sampled outs
   theme_classic()  
 ```
 
+***
+This is a chordogram of my first track. This second track is built with sampled outside sounds so it doesn't make much sense to think of it in terms of chords and keys. I believe we have seen enough information with the chroma and SSM of the second track to understand that nothing fruitful would come.
+
+Here we see that a lot of chords that include the note G are selected, whilst those who don't have the note G as a major note in the chord are yellow. This must be because of the G ostinato at the beginning that the soprano saxophone holds. The beginning has three chord classifications: G, c, E (whether 7th chords, a minor chord, or a major chord). Eb chords are also prevalent, which explain why Cm is higlighted. I wrote this piece without a key, mostly just building chords around the note G so it makes sense to me for all the chords with a G to be present as I do rotate through a lot of weird clusters. 
+
+The arpeggios later in the piece don't register as chords since the chordogram lacks the ability to group chroma by bar and have an overview of the general chord when the notes don't fall at the same time. The final long fifths at the end of my piece are the darkest part of the chordogram. Two chords are selected: E major and E minor. This makes sense as the chord is an open fifth so it could go either way and the chrodogram would need to check the previous context of the piece in order to decide whether a major or minor third would make more sense with the fifths.
+
+
 ### Keygram
 
 ```{r}
@@ -317,6 +325,11 @@ This matrix is intriguing because it doesn't see any of the various sampled outs
   labs(x = "Time (s)", y = "Template", fill = NULL) +
   theme_classic()  
 ```
+
+***
+
+The keygram seems to be very confused as to what the key could be. This makes sense, as I mentioned before, I wrote this without a key with mind. All I had decided was the theme and that the center of tonality was G. With the context that the piece isn't meant to have a key, I wonder if there is much information to be gleaned from this chart. I've also tried different norms and distances but it doesn't get more defined than this. This reflects well the nature of how I composed but does not give us much information.
+
 
 ### Temporary Conclusion Tab Title
 
