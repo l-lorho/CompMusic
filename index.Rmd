@@ -341,6 +341,78 @@ The arpeggios later in the piece don't register as chords since the chordogram l
 
 The keygram seems to be very confused as to what the key could be. This makes sense, as I mentioned before, I wrote this without a key with mind. All I had decided was the theme and that the center of tonality was G. With the context that the piece isn't meant to have a key, I wonder if there is much information to be gleaned from this chart. I've also tried different norms and distances but it doesn't get more defined than this. This reflects well the nature of how I composed but does not give us much information.
 
+Tempograms {.storyboard}
+=========================================
+
+### Here is a tempogram for my first track
+
+```{r}
+"features/lo-l-1.json" |>
+  compmus_tempogram(window_size = 8, hop_size = 1, cyclic = FALSE) |>
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+
+```
+
+***
+
+Analysis
+
+### Here is a tempogram for my second track
+
+```{r}
+"features/lo-l-2.json" |>
+  compmus_tempogram(window_size = 8, hop_size = 1, cyclic = FALSE) |>
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+
+```
+
+***
+
+Analysis
+
+### Here is a cyclic tempogram for my first track
+
+```{r}
+"features/lo-l-1.json" |>
+  compmus_tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) |>
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+
+```
+
+***
+ 
+Analysis
+
+### Here is a tempogram for my first track
+
+```{r}
+"features/lo-l-2.json" |>
+  compmus_tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) |>
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+
+```
+
+***
+
+Analysis
+
+
 Conclusion
 =========================================
 
