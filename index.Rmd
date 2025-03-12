@@ -359,7 +359,11 @@ Tempograms {.storyboard}
 
 ***
 
-Analysis
+A tempogram for both my pieces doesn't really make much sense. This first piece, I originally wrote 60 bpm on my sheet music. Since there are a very wide range of time signature within this first movement, this leads to a poor result. The time signatures in my piece are 4/4, 1/8, 3/8, 5/8, 2/4, and 7/8. I think maybe it could pick up on the regular 8th notes that time all these time signature together, but there are many tuplets and polyrhythms blurring this 8th note underlying pulse.
+
+The graph shows a widly inconcsistent tempo. This could have some sense since this is performed by real people and they might fluctuate. Something I should mention is that I did give my players the liberty to take time in between phrases for breathing since this piece requires a lot of continous playing for all of them. This can also mess with the tempo perception.
+
+Overall, you can see these regular tempo harmonics reflected in the piece. The first line seems to sit at 100 bpm, quite higher than the bmp on my sheet music.
 
 ### Here is a tempogram for my second track
 
@@ -376,7 +380,10 @@ Analysis
 
 ***
 
-Analysis
+These piece was designed without a time signature. Since it is a collection of outside recorded sounds, they do naturally have a rhythmic percussive sound which might create these onsets. However, there is nothing connecting all these sounds to one another. Every sound comes in randomly, the template I used in my DAW worked with seconds and not bars. I find it interesting that it found a tempo so high since the middle part with the instrument is quite slow. Of course the huge amount of reverb and delay I put on the instrument probably didn't help it understand whether it was a new onset or just the decay of the note.
+
+This piece shows a more regular tempo overall compared to piece 1. It is electronic which could explain this a bit. I also use similar sounds and effects on the sounds throughout. It did find the timbre and chroma to not change at all, so it makes sense that it also interprets the tempo as staying the same. The tempogram seems to interpret the electronic sounds in a similar way as the chromagrams and SSMs. Here, again, you can see the doubling of the tempo octaves. It seems the lowest one sits at just around 70.
+
 
 ### Here is a cyclic tempogram for my first track
 
@@ -410,7 +417,7 @@ Analysis
 
 ***
 
-Analysis
+This cyclic tempogram has a lot more variation that the standard tempogram
 
 
 Conclusion
