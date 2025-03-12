@@ -399,8 +399,9 @@ This piece shows a more regular tempo overall compared to piece 1. It is electro
 ```
 
 ***
- 
-Analysis
+
+The cyclic tempogram shows tempos that vary wildly from one second to the next rangin from 85bpm to 145bpm. At the very end, despite the three long chords I have composed, the tempogram interprets this as even higher that 145bpm, which is fascinating. It must be very confused by the sudden slowness that it compensates by subdividing. At 140 seconds, the tempo drops from very high to very low. Since the bulk of the middle part are arppegios following the 8th notes of the piece, I believe it is the time signature changes that gets it to be confused as to where the one is. This is why the tempo doesn't stay regular despite it being a very stable part of the piece. I'm very surprised with the cyclic tempogram that there is so much noise surrounding it since there isn't that much noise in the standard tempogram.
+
 
 ### Here is a tempogram for my first track
 
@@ -417,7 +418,7 @@ Analysis
 
 ***
 
-This cyclic tempogram has a lot more variation that the standard tempogram
+This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I still have not been able to piece together what could be catching the attention of the program. You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
 
 
 Conclusion
