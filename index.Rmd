@@ -120,7 +120,7 @@ get_pr <- function(fit) {
 
 ```
 
-Introduction {.storyboard}
+CLASS CORPUS {.storyboard}
 =========================================
 
 ### Introducing my own tracks
@@ -174,9 +174,11 @@ ggplotly()
 
 ------------------------------------------------------------------------
 
-Here I will add a text to locate my tracks and analyze this upwards trend.
+Try to include as many of the Essentia features as you can.
+If possible, label the location of your own tracks on the visualisation.
+Include a short description of how you think your tracks relate to the class corpus as a whole, based on the Essentia features. Did Essentia characterise your tracks correctly? How similar are your tracks to the 'average' track in the class corpus, and likewise, and in what ways do you think that your tracks are unique and stand out from the class corpus? Was Essentia able to identify what was unique?
 
-Chromagrams and Cepstrograms {.storyboard}
+CHROMA {.storyboard}
 =========================================
 
 ### Here is a chromagram for my first track
@@ -229,6 +231,50 @@ What is most interesting to note here is that my piece starts with an ostinato o
 
 This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument). when I played the instrument, I mostly taped a bunch of different notes but it seemed that this was interpreted here as primarily a G#. I wonder if this is because most of the notes had overtones that evoked G# too.
 
+### Here is a Self-Similarity Matrix for Chroma - Track 1
+
+```{r}
+"features/lo-l-1.json" |>                           # Change the track
+  compmus_chroma(norm = "euclidean") |>                 # Change the norm
+  compmus_self_similarity(
+    feature = pc,
+    distance = "cosine"                             # Change the distance
+  ) |>   
+  ggplot(aes(x = xtime, y = ytime, fill = d)) + 
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = NULL, fill = NULL) +
+  theme_classic()                                      # Change the theme?
+```
+
+------------------------------------------------------------------------
+
+I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.The beginning and end are clearly dark. This is because the beginning has that G ostinato and the end of the piece includes repeating open fifths thrice.
+
+### Here is a Self-Similarity Matrix for Chroma - Track 2
+
+```{r}
+"features/lo-l-2.json" |>                           # Change the track
+  compmus_chroma(norm = "euclidean") |>                 # Change the norm
+  compmus_self_similarity(
+    feature = pc,
+    distance = "cosine"                             # Change the distance
+  ) |>   
+  ggplot(aes(x = xtime, y = ytime, fill = d)) + 
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = NULL, fill = NULL) +
+  theme_classic()                                      # Change the theme?
+```
+
+------------------------------------------------------------------------
+
+Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. I have not been able to find in the audio what causes this similarity to happen. I wonder if I maybe directly copied a part of my piece to this section and that I've forgotten that I've done it but the computer recognises this segment from earlier.
+
+
+LOUDNESS {.storyboard}
+=========================================
+
 ### Here is the cepstrogram for my first track
 
 ```{r}
@@ -269,28 +315,8 @@ Fill in
 
 Fill in
 
-SSM {.storyboard}
+TIMBRE {.storyboard}
 =========================================
-
-### Here is a Self-Similarity Matrix for Chroma - Track 1
-
-```{r}
-"features/lo-l-1.json" |>                           # Change the track
-  compmus_chroma(norm = "euclidean") |>                 # Change the norm
-  compmus_self_similarity(
-    feature = pc,
-    distance = "cosine"                             # Change the distance
-  ) |>   
-  ggplot(aes(x = xtime, y = ytime, fill = d)) + 
-  geom_raster() +
-  scale_fill_viridis_c(guide = "none") +               # Change the colours?
-  labs(x = "Time (s)", y = NULL, fill = NULL) +
-  theme_classic()                                      # Change the theme?
-```
-
-------------------------------------------------------------------------
-
-I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.The beginning and end are clearly dark. This is because the beginning has that G ostinato and the end of the piece includes repeating open fifths thrice.
 
 ### Here is a Self-Similarity Matrix for Timbre - Track 1
 
@@ -312,26 +338,6 @@ I find this interesting because the piece does include a lot of repeats yet the 
 
 This makes a lot of sense. The piece is a sax quartet so there is not much that changes in terms of timbre. Here we can again also see that ostinato on G at the beginning, highlighted by the completely similarity of that one note repeating as that section is black at the start. There is some lighter sections, possibly when the other saxophones start joining. In the second half, they all play all the time which is why it then settles into dark quickly.
 
-### Here is a Self-Similarity Matrix for Chroma - Track 2
-
-```{r}
-"features/lo-l-2.json" |>                           # Change the track
-  compmus_chroma(norm = "euclidean") |>                 # Change the norm
-  compmus_self_similarity(
-    feature = pc,
-    distance = "cosine"                             # Change the distance
-  ) |>   
-  ggplot(aes(x = xtime, y = ytime, fill = d)) + 
-  geom_raster() +
-  scale_fill_viridis_c(guide = "none") +               # Change the colours?
-  labs(x = "Time (s)", y = NULL, fill = NULL) +
-  theme_classic()                                      # Change the theme?
-```
-
-------------------------------------------------------------------------
-
-Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. I have not been able to find in the audio what causes this similarity to happen. I wonder if I maybe directly copied a part of my piece to this section and that I've forgotten that I've done it but the computer recognises this segment from earlier.
-
 ### Here is a Self-Similarity Matrix for Timbre - Track 2
 
 ```{r}
@@ -352,7 +358,7 @@ Here we see the same thing happen as with the chromagram where the novelty in ye
 
 This matrix is intriguing because it doesn't see any of the various sampled outside train sounds as different from one another. It seems because they're all mechanical sounding or in the same range of pitch that they resemble one another. Funnily enough, in the same place as the dark square from the SSM for chroma, there's a lighter patch in the timbre SSM.
 
-Chordogram and Keygram {.storyboard}
+HARMONY {.storyboard}
 =========================================
 
 ### Chordogram for my first track
@@ -446,7 +452,7 @@ Fill in
 Fill in.
 
 
-Tempograms {.storyboard}
+TEMPO {.storyboard}
 =========================================
 
 ### Here is a tempogram for my first track
@@ -525,8 +531,18 @@ The cyclic tempogram shows tempos that vary wildly from one second to the next r
 
 This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I still have not been able to piece together what could be catching the attention of the program. You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
 
+### Here is a histogram of tempi for the class corpus
 
-Conclusion {.storyboard}
+```{r}
+compmus2025.cvs |> ggplot(aes(x = tempo)) + geom_histogram(binwidth = 10)
+```
+
+***
+
+Situate your tracks
+
+
+CONCLUSION {.storyboard}
 =========================================
 
 ### Clustering
@@ -577,6 +593,7 @@ Fill in
 
 ### Classifying
 
+Fill in
 
 ### What conclusions can we draw from this?
 
