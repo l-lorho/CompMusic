@@ -534,7 +534,8 @@ This cyclic tempogram has a lot more variation that the standard tempogram. Arou
 ### Here is a histogram of tempi for the class corpus
 
 ```{r}
-compmus2025.cvs |> ggplot(aes(x = tempo)) + geom_histogram(binwidth = 10)
+compmus2025 <- read_csv("compmus2025.csv")
+compmus2025 |> ggplot(aes(x = tempo)) + geom_histogram(binwidth = 10)
 ```
 
 ***
