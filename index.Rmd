@@ -13,6 +13,9 @@ library(flexdashboard)
 library(ggplot2)
 library(plotly)
 library(rjson)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
 source("compmus.R")
 
 major_chord <-
@@ -96,6 +99,25 @@ key_templates <-
     "D#:min", circshift(minor_key, 3)
   )
 
+source("compmus.R")
+
+get_conf_mat <- function(fit) {
+  outcome <- .get_tune_outcome_names(fit)
+  fit |> 
+    collect_predictions() |> 
+    conf_mat(truth = outcome, estimate = .pred_class)
+}  
+
+get_pr <- function(fit) {
+  fit |> 
+    conf_mat_resampled() |> 
+    group_by(Prediction) |> mutate(precision = Freq / sum(Freq)) |> 
+    group_by(Truth) |> mutate(recall = Freq / sum(Freq)) |> 
+    ungroup() |> filter(Prediction == Truth) |> 
+    select(class = Prediction, precision, recall)
+}  
+
+
 ```
 
 Introduction {.storyboard}
@@ -120,7 +142,6 @@ compmus2025 |>                   # Start with the data
     aes(
       x = valence,
       y = arousal,
-      size = tempo,
       colour = danceability
     )
   ) +
@@ -155,7 +176,7 @@ ggplotly()
 
 Here I will add a text to locate my tracks and analyze this upwards trend.
 
-Chromagram {.storyboard}
+Chromagrams and Cepstrograms {.storyboard}
 =========================================
 
 ### Here is a chromagram for my first track
@@ -207,6 +228,46 @@ What is most interesting to note here is that my piece starts with an ostinato o
 ------------------------------------------------------------------------
 
 This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument). when I played the instrument, I mostly taped a bunch of different notes but it seemed that this was interpreted here as primarily a G#. I wonder if this is because most of the notes had overtones that evoked G# too.
+
+### Here is the cepstrogram for my first track
+
+```{r}
+"features/lo-l-1.json" |>                           # Change the track
+  compmus_mfccs(norm = "chebyshev") |>                  # Change the norm
+  ggplot(aes(x = time, y = mfcc, fill = value)) + 
+  geom_raster() +
+  scale_y_continuous(
+    breaks = 0:12,
+    minor_breaks = NULL,
+  ) +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = "Coefficient Number", fill = NULL) +
+  theme_classic()                                      # Change the theme?
+```
+
+***
+
+Fill in
+
+### Here is the cepstrogram for my second track
+
+```{r}
+"features/lo-l-2.json" |>                           # Change the track
+  compmus_mfccs(norm = "chebyshev") |>                  # Change the norm
+  ggplot(aes(x = time, y = mfcc, fill = value)) + 
+  geom_raster() +
+  scale_y_continuous(
+    breaks = 0:12,
+    minor_breaks = NULL,
+  ) +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = "Coefficient Number", fill = NULL) +
+  theme_classic()                                      # Change the theme?
+```
+
+***
+
+Fill in
 
 SSM {.storyboard}
 =========================================
@@ -341,6 +402,50 @@ The arpeggios later in the piece don't register as chords since the chordogram l
 
 The keygram seems to be very confused as to what the key could be. This makes sense, as I mentioned before, I wrote this without a key with mind. All I had decided was the theme and that the center of tonality was G. With the context that the piece isn't meant to have a key, I wonder if there is much information to be gleaned from this chart. I've also tried different norms and distances but it doesn't get more defined than this. This reflects well the nature of how I composed but does not give us much information.
 
+### Chordogram for my second track
+
+```{r}
+
+"features/lo-l-2.json" |> 
+  compmus_chroma(norm = "identity") |> 
+  compmus_match_pitch_templates(
+    chord_templates,         # Change to chord_templates if desired
+    norm = "euclidean",       # Try different norms (and match it with what you used in `compmus_chroma`)
+    distance = "cosine"   # Try different distance metrics
+  ) |>
+  ggplot(aes(x = time, y = name, fill = d)) + 
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = "Template", fill = NULL) +
+  theme_classic()  
+```
+
+***
+Fill in
+
+
+### Keygram for my second track
+
+```{r}
+"features/lo-l-2.json" |> 
+  compmus_chroma(norm = "identity") |> 
+  compmus_match_pitch_templates(
+    key_templates,         # Change to chord_templates if desired
+    norm = "euclidean",       # Try different norms (and match it with what you used in `compmus_chroma`)
+    distance = "cosine"   # Try different distance metrics
+  ) |>
+  ggplot(aes(x = time, y = name, fill = d)) + 
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +               # Change the colours?
+  labs(x = "Time (s)", y = "Template", fill = NULL) +
+  theme_classic()  
+```
+
+***
+
+Fill in.
+
+
 Tempograms {.storyboard}
 =========================================
 
@@ -403,7 +508,7 @@ This piece shows a more regular tempo overall compared to piece 1. It is electro
 The cyclic tempogram shows tempos that vary wildly from one second to the next rangin from 85bpm to 145bpm. At the very end, despite the three long chords I have composed, the tempogram interprets this as even higher that 145bpm, which is fascinating. It must be very confused by the sudden slowness that it compensates by subdividing. At 140 seconds, the tempo drops from very high to very low. Since the bulk of the middle part are arppegios following the 8th notes of the piece, I believe it is the time signature changes that gets it to be confused as to where the one is. This is why the tempo doesn't stay regular despite it being a very stable part of the piece. I'm very surprised with the cyclic tempogram that there is so much noise surrounding it since there isn't that much noise in the standard tempogram.
 
 
-### Here is a tempogram for my first track
+### Here is a cyclic tempogram for my second track
 
 ```{r}
 "features/lo-l-2.json" |>
@@ -421,9 +526,58 @@ The cyclic tempogram shows tempos that vary wildly from one second to the next r
 This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I still have not been able to piece together what could be catching the attention of the program. You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
 
 
-Conclusion
+Conclusion {.storyboard}
 =========================================
 
-### What conclusion can we draw from this?
+### Clustering
+
+```{r}
+compmus2025 <- read_csv("compmus2025.csv")
+cluster_juice <-
+  recipe(
+    filename ~
+      arousal +
+      danceability +
+      instrumentalness +
+      tempo +
+      valence,
+    data = compmus2025
+  ) |>
+  step_center(all_predictors()) |>
+  step_scale(all_predictors()) |> 
+  # step_range(all_predictors()) |> 
+  prep(compmus2025) |>
+  juice() |>
+  column_to_rownames("filename")
+compmus_dist <- dist(cluster_juice, method = "euclidean")
+compmus_dist |> 
+  hclust(method = "single") |> # Try single, average, and complete.
+  dendro_data() |>
+  ggdendrogram()
+```
+
+***
+
+Fill in
+
+### Heatmap
+
+```{r}
+heatmaply(
+  cluster_juice,
+  hclustfun = hclust,
+  hclust_method = "average",  # Change for single, average, or complete linkage.
+  dist_method = "euclidean"
+)
+```
+
+***
+
+Fill in
+
+### Classifying
+
+
+### What conclusions can we draw from this?
 
 Here will be my final conclusion on all my visualisations.
