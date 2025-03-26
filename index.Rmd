@@ -16,6 +16,7 @@ library(rjson)
 library(tidymodels)
 library(ggdendro)
 library(heatmaply)
+library(htmltools)
 source("compmus.R")
 
 major_chord <-
@@ -123,17 +124,29 @@ get_pr <- function(fit) {
 CLASS CORPUS {.storyboard}
 =========================================
 
-### Introducing my own tracks
+### Welcome!
+
+Welcome to this flexdashboard. I will be investigating a class corpus that is comprised of both AI generated music and human composed music. First things first, I want to introduce the two tracks I contributed to this corpus.
 
 First Track
 
-This is my own music. I composed it early 2024 for a saxophone quartet (soprano, alto, tenor, bass). It is the first movement of a larger 10 minute piece called The Water Bellows. It follows the story of a ship which meets an unfortunate end, inspired by the real-life HMAS Sydney II tragedy whose memorial I visited in Geraldton, Australia. This recording is an extract from the performance played in the Eindhoven concert hall.
+<audio controls>
+<source src="lo-l-1.mp3" type="audio/mp3">
+</audio>
+
+This is my own music that I composed. I am a composition student at the Tilburg conservatory and I composed it early 2024 for a saxophone quartet (soprano, alto, tenor, bass). It is the first movement of a larger 10 minute piece called The Water Bellows. It follows the story of a ship which meets an unfortunate end, inspired by the real-life HMAS Sydney II tragedy whose memorial I visited in Geraldton, Australia. The first movement covers the ship leaving the harbour (we can hear the ostinato mimicking a lighthouse) and the arrival of the danger (the blaring horns at the end of the movement). This recording is an extract from the performance played in the Eindhoven concert hall. The four players are Charlotte van Husen (bass), Javier Villegas (tenor), Karlo Zamic (alto), and Juan Velez (soprano).
 
 Second Track
 
-Also my own music. Composed in early 2024 as well for a theater collective in Tilburg called EELT. They did a collaboration with the women’s emancipation center in Tilburg called Feniks and I was lucky enough to be asked to write an atmospheric piece to accompany their theater and dance performance. The sounds used in the piece are recorded audio from instruments but also locations, such as train stations. They were then processed in a DAW.
+<audio controls>
+<source src="lo-l-2.mp3" type="audio/mp3">
+</audio>
 
-### Here is my class corpus visualisation
+This is also my own music, written in my 2nd year of conservatory. This was composed in early 2024 for a theater collective in Tilburg called EELT. They did a collaboration with the women’s emancipation center called Feniks and I was lucky enough to be asked to write an atmospheric piece to accompany their theater and dance performance. The sounds used in the piece are recorded audio from instruments but also locations, such as train stations. They were then processed in a DAW and effects were added. Since this piece is meant to accompany a performance, it is a lot simpler in terms of texture. It is also very different to use sounds to create music rather than notes like my previous piece.
+
+Hop onto the next page to see how these pieces are situated in the class corpus!
+
+### What does the class corpus look like? 
 
 ```{r}
 compmus2025 <- read_csv("C:/Users/Gebruiker/Downloads/compmus2025.csv")
@@ -142,6 +155,7 @@ compmus2025 |>                   # Start with the data
     aes(
       x = valence,
       y = arousal,
+      size = tempo,
       colour = danceability
     )
   ) +
@@ -167,21 +181,26 @@ compmus2025 |>                   # Start with the data
   labs(                       # Make the titles nice.
     x = "Valence",
     y = "Arousal",
-    colour = "Danceability"
+    colour = "Danceability",
+    size = "Tempo"
   )
 ggplotly()
 ```
 
 ------------------------------------------------------------------------
 
-Try to include as many of the Essentia features as you can.
-If possible, label the location of your own tracks on the visualisation.
-Include a short description of how you think your tracks relate to the class corpus as a whole, based on the Essentia features. Did Essentia characterise your tracks correctly? How similar are your tracks to the 'average' track in the class corpus, and likewise, and in what ways do you think that your tracks are unique and stand out from the class corpus? Was Essentia able to identify what was unique?
+Here we have a visualization of the class corpus. There is this upward corresponding trend between valence, arousal and danceability. This is seen in the upwards going line and the dots getting lighter and lighter in colour. 
+
+My first track is the furtherest dot on the bottom left. It ranks lowest for valence and arousal at 3.1 and 3.4 accordingly. It's tempo is also marked as 30 bpm and the danceability is at 0.1, both some of the lowest in the corpus as well. As it is a melodic contemporary piece, it makes a lot of sense. I also use a lot of alternating and changing time signatures which was meant to purposefully make the listener lose the pulse (similar as to walking on a boat, tripping over your own feet as the boat sways unevenly). Although the bpm is incorrect, for the rest I would agree with Essentia.
+
+For my second track, it ranked a little higher. 3.8 for arousal and 3.7 for valence. For arousal it ranks in the low region of the corpus, and for valence it is third worst (with my first track being the worst). This time, Essentia computed the bpm for 144bpm. Since it is an atmospheric piece made of a collection of sound, there was no bpm to begin with. I find it interesting that there managed to be enough spikes in energy that were regular for a bpm to be determined. I do think 144bpm is quite fast well you listen to the piece. For danceability, surprisingly, it ends up in the middle of the corpus with 0.34. The track falls perfectly on the trend line, the very first in the bottom left. I do think that even though this track was made to be performed on, I did not believe it would be considered high in danceability in the way Essentia has determined danceability to be. I believe instead that this danceability was affected by the measured bpm which is very high, but not very realistic.
+
+Both my pieces, although very different from each other, are very far from a pop song. These features tend to be computed best with Western pop music so it makes sense that they both rank very low on most features. Essentia did managed to identify that they stand out from the rest of the corpus, especially from the AI generated songs which usually use these typical pop features and therefore can be computed more accurately and highly.
 
 CHROMA {.storyboard}
 =========================================
 
-### Here is a chromagram for my first track
+### Let's dive into pitch first. Here is a chromagram for my first track.
 
 ```{r}
 "features/lo-l-1.json" |>                           # Change the track
@@ -204,9 +223,9 @@ CHROMA {.storyboard}
 
 ------------------------------------------------------------------------
 
-What is most interesting to note here is that my piece starts with an ostinato of G, clearly being shown in the chromagram. We can also see that the tonality remains in the same key where the I chord of the key (Gmajor) is dominant (G, B, D). We also see mediantics at play with the E minor chord being present.G# is present sometimes in the second half of the piece. I am wondering whether it could be that as the instruments warmed up when they played the piece, that the tuning went up and therefore G could get mistaken for G#.
+What is most interesting to note here is that my piece starts with an ostinato of G, clearly being shown in the chromagram. The chords that come through during this ostinato also show up very clearly and accurately. We can also see that the tonality remains in the same key where the I chord of the key (Gmajor) is dominant (G, B, D). We also see mediantics at play with the E minor chord being present. The middle of the piece gets more chroma which makes sense as a lot of arpeggios are playing. G# is present sometimes in the second half of the piece. I am wondering whether it could be that as the instruments warmed up when they played the piece, that the tuning went up and therefore G could get mistaken for G#. The piece ends on an open fifth being played three times, which is shown with the E and the B being highlighted. We also see F#, G#, D# lighting up. The D# can be explain by tuning issues for the E (which would also explain why the E isn't lighting up as strong as the B), but I would love to know which overtones are making F# and G# show up. 
 
-### Here is a chromagram for my second track
+### Similarly, here is a chromagram for my second track.
 
 ```{r}
 "features/lo-l-2.json" |>                           # Change the track
@@ -229,9 +248,9 @@ What is most interesting to note here is that my piece starts with an ostinato o
 
 ------------------------------------------------------------------------
 
-This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument). when I played the instrument, I mostly taped a bunch of different notes but it seemed that this was interpreted here as primarily a G#. I wonder if this is because most of the notes had overtones that evoked G# too.
+This is super interesting because this track is mostly atmospheric sounds recorded from a train station. This is reflected in the chromagram wonderfully. The only notes that are shown are when the instrument comes in in the middle. This chromagram almost shows structure better than pitch as three sections are clearly denoted (before the instrument, the instrument, after the instrument). when I played the instrument, I mostly taped a bunch of different notes but it seemed that this was interpreted here as primarily a G#. I wonder if this is because most of the notes had overtones that evoked G# too. We also see as second strongest pitch the D#, the fifth of G#. This would make sense in terms of overtones. The minor third also is seen but very light (B).
 
-### Here is a Self-Similarity Matrix for Chroma - Track 1
+### Now let's use a Self-Similarity Matrix to see repetitions, novelties, and homogeneity in my first track.
 
 ```{r}
 "features/lo-l-1.json" |>                           # Change the track
@@ -249,9 +268,9 @@ This is super interesting because this track is mostly atmospheric sounds record
 
 ------------------------------------------------------------------------
 
-I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.The beginning and end are clearly dark. This is because the beginning has that G ostinato and the end of the piece includes repeating open fifths thrice.
+I find this interesting because the piece does include a lot of repeats yet the graph tells us that it composes of a lot of new notes.The beginning and end are clearly dark. This is because the beginning has that G ostinato and the end of the piece includes repeating open fifths thrice. Since it is a live performance, the repeats might be played slightly differently. I wonder if that could affect the way the matrix computes the material as new instead of repetition that has already happened. This was very surprising to me.
 
-### Here is a Self-Similarity Matrix for Chroma - Track 2
+### Now let's look at what a Self-Similarity Matrix would look like for an atmospheric piece that has very little musical pitches.
 
 ```{r}
 "features/lo-l-2.json" |>                           # Change the track
@@ -269,13 +288,48 @@ I find this interesting because the piece does include a lot of repeats yet the 
 
 ------------------------------------------------------------------------
 
-Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. I have not been able to find in the audio what causes this similarity to happen. I wonder if I maybe directly copied a part of my piece to this section and that I've forgotten that I've done it but the computer recognises this segment from earlier.
+Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. Fill in.
 
 
 LOUDNESS {.storyboard}
 =========================================
 
-### Here is the cepstrogram for my first track
+### Now that we delved into pitch and novelty in pitch, what about energy novelty? How loud is my piece?
+
+```{r}
+"features/lo-l-1.json" |>
+  compmus_energy_novelty() |> 
+  ggplot(aes(t, novelty)) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "Time (s)", y = "Energy Novelty")
+```
+
+***
+
+Fill in.
+
+### The previous track was acoustic and the recording came from a concert hall. I wonder how an electronic piece differs.
+
+```{r}
+"features/lo-l-2.json" |>
+  compmus_energy_novelty() |> 
+  ggplot(aes(t, novelty)) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "Time (s)", y = "Energy Novelty")
+```
+
+
+***
+
+Fill in.
+
+
+TIMBRE {.storyboard}
+=========================================
+
+### A cepstrogram, what can we glimpse?
 
 ```{r}
 "features/lo-l-1.json" |>                           # Change the track
@@ -295,7 +349,7 @@ LOUDNESS {.storyboard}
 
 Fill in
 
-### Here is the cepstrogram for my second track
+### More mysteries to uncover in this cepstrogram too.
 
 ```{r}
 "features/lo-l-2.json" |>                           # Change the track
@@ -315,10 +369,7 @@ Fill in
 
 Fill in
 
-TIMBRE {.storyboard}
-=========================================
-
-### Here is a Self-Similarity Matrix for Timbre - Track 1
+### A Self-Similarity Matrix just like we saw before, but this time let's look at timbre.
 
 ```{r}
 "features/lo-l-1.json" |>                           # Change the track
@@ -338,7 +389,7 @@ TIMBRE {.storyboard}
 
 This makes a lot of sense. The piece is a sax quartet so there is not much that changes in terms of timbre. Here we can again also see that ostinato on G at the beginning, highlighted by the completely similarity of that one note repeating as that section is black at the start. There is some lighter sections, possibly when the other saxophones start joining. In the second half, they all play all the time which is why it then settles into dark quickly.
 
-### Here is a Self-Similarity Matrix for Timbre - Track 2
+### What about track 2's timbre? Any differences?
 
 ```{r}
 "features/lo-l-2.json" |>                           # Change the track
@@ -361,7 +412,7 @@ This matrix is intriguing because it doesn't see any of the various sampled outs
 HARMONY {.storyboard}
 =========================================
 
-### Chordogram for my first track
+### Here is where things get really interesting. How accurate is this chordogram?
 
 ```{r}
 
@@ -387,7 +438,7 @@ Here we see that a lot of chords that include the note G are selected, whilst th
 The arpeggios later in the piece don't register as chords since the chordogram lacks the ability to group chroma by bar and have an overview of the general chord when the notes don't fall at the same time. The final long fifths at the end of my piece are the darkest part of the chordogram. Two chords are selected: E major and E minor. This makes sense as the chord is an open fifth so it could go either way and the chrodogram would need to check the previous context of the piece in order to decide whether a major or minor third would make more sense with the fifths.
 
 
-### Keygram for my first track
+### What about the key? I'm love to find out since I didn't compose in a specific key.
 
 ```{r}
 "features/lo-l-1.json" |> 
@@ -408,7 +459,7 @@ The arpeggios later in the piece don't register as chords since the chordogram l
 
 The keygram seems to be very confused as to what the key could be. This makes sense, as I mentioned before, I wrote this without a key with mind. All I had decided was the theme and that the center of tonality was G. With the context that the piece isn't meant to have a key, I wonder if there is much information to be gleaned from this chart. I've also tried different norms and distances but it doesn't get more defined than this. This reflects well the nature of how I composed but does not give us much information.
 
-### Chordogram for my second track
+### Chordogram... How relevant can it be for a piece mostly made from found footage?
 
 ```{r}
 
@@ -430,7 +481,7 @@ The keygram seems to be very confused as to what the key could be. This makes se
 Fill in
 
 
-### Keygram for my second track
+### What key are train tracks in?
 
 ```{r}
 "features/lo-l-2.json" |> 
@@ -449,13 +500,13 @@ Fill in
 
 ***
 
-Fill in.
+Fill in
 
 
 TEMPO {.storyboard}
 =========================================
 
-### Here is a tempogram for my first track
+### My sheet music tells me the bpm is 60. Let's see if this tempogram agrees.
 
 ```{r}
 "features/lo-l-1.json" |>
@@ -476,7 +527,7 @@ The graph shows a widly inconcsistent tempo. This could have some sense since th
 
 Overall, you can see these regular tempo harmonics reflected in the piece. The first line seems to sit at 100 bpm, quite higher than the bmp on my sheet music.
 
-### Here is a tempogram for my second track
+### This piece was designed without a tempo.
 
 ```{r}
 "features/lo-l-2.json" |>
@@ -496,7 +547,7 @@ These piece was designed without a time signature. Since it is a collection of o
 This piece shows a more regular tempo overall compared to piece 1. It is electronic which could explain this a bit. I also use similar sounds and effects on the sounds throughout. It did find the timbre and chroma to not change at all, so it makes sense that it also interprets the tempo as staying the same. The tempogram seems to interpret the electronic sounds in a similar way as the chromagrams and SSMs. Here, again, you can see the doubling of the tempo octaves. It seems the lowest one sits at just around 70.
 
 
-### Here is a cyclic tempogram for my first track
+### What about a cyclic tempogram?
 
 ```{r}
 "features/lo-l-1.json" |>
@@ -514,7 +565,7 @@ This piece shows a more regular tempo overall compared to piece 1. It is electro
 The cyclic tempogram shows tempos that vary wildly from one second to the next rangin from 85bpm to 145bpm. At the very end, despite the three long chords I have composed, the tempogram interprets this as even higher that 145bpm, which is fascinating. It must be very confused by the sudden slowness that it compensates by subdividing. At 140 seconds, the tempo drops from very high to very low. Since the bulk of the middle part are arppegios following the 8th notes of the piece, I believe it is the time signature changes that gets it to be confused as to where the one is. This is why the tempo doesn't stay regular despite it being a very stable part of the piece. I'm very surprised with the cyclic tempogram that there is so much noise surrounding it since there isn't that much noise in the standard tempogram.
 
 
-### Here is a cyclic tempogram for my second track
+### And here's a cyclic tempogram for my second track.
 
 ```{r}
 "features/lo-l-2.json" |>
@@ -531,7 +582,7 @@ The cyclic tempogram shows tempos that vary wildly from one second to the next r
 
 This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I still have not been able to piece together what could be catching the attention of the program. You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
 
-### Here is a histogram of tempi for the class corpus
+### Let's zoom out and take a look at tempi in the class corpus.
 
 ```{r}
 compmus2025 <- read_csv("compmus2025.csv")
@@ -546,7 +597,7 @@ Situate your tracks
 CONCLUSION {.storyboard}
 =========================================
 
-### Clustering
+### Let's create some order in the class corpus.
 
 ```{r}
 compmus2025 <- read_csv("compmus2025.csv")
@@ -577,7 +628,7 @@ compmus_dist |>
 
 Fill in
 
-### Heatmap
+### Will a heatmap help clarify things?
 
 ```{r}
 heatmaply(
@@ -592,10 +643,6 @@ heatmaply(
 
 Fill in
 
-### Classifying
+### Here are some final thoughts about everything we have investigated.
 
-Fill in
-
-### What conclusions can we draw from this?
-
-Here will be my final conclusion on all my visualisations.
+Fill in.
