@@ -583,7 +583,7 @@ The cyclic tempogram shows tempos that vary wildly from one second to the next r
 
 ***
 
-This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I still have not been able to piece together what could be catching the attention of the program. You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
+This cyclic tempogram has a lot more variation that the standard tempogram. Around the 160 second time mark, there's a huge jump in tempo to 144. It looks like it lines up with the timbre and chroma difference at that time mark. I wonder what sound it is picking up to jump suddenly to such a high tempo You can also see the structure in this tempogram, the three parts this piece seems to be divided into where it is before the instrument, during, and after.
 
 ### Let's zoom out and take a look at tempi in the class corpus.
 
@@ -628,13 +628,11 @@ compmus_dist |>
 
 ***
 
-This is super interesting. I tried doing different kinds of clustering, but found out that when using the 'single' method, my track ended up both being clustered all the way to the left.
+This is super interesting. I tried doing different kinds of clustering, but found out that when using the 'complete' linkage, the dendrogram looked the most balanced.
 
-My second track, the atmospheric track, despite being created electronically ended up being the furtherest track in similarirty to the rest of the class corpus. My first track, the saxophone quartet, was linked to some other tracks but is still quite seperate from most of the corpus. Due to its tempo similarities with other tracks and instrumentalness, it might have been linked to some other acoustic pieces.
+The biggest pattern I noticed is that a couple of people's track ended up next to each other in the dendrogram. This means that their tracks sounded similar to one another. My two tracks are linked together with only one track seperating them, which interestingly enough is an AI generated track. I also think my tracks are quite afar in terms of style, genre, compositional methods, and live performance so I am interested to see them linked together. It makes me wonder whether I have an artistic signature.
 
-I also notice that another person has had their tracks seperated from the rest similarly to me. Sanne-1 and sanne-2 are all the way on the right, although both tracks are thought to be similar to onee another but not to the rest.
-
-Most of the clustering in the middle are of the AI generated songs, whilst the tracks on the edges are composed music. A lot of people's two tracks are similar enough to one another that get clustered together (such as ellen-1 and ellen-2, thomas-1 and thomas-2 or santiago-1 and santiago-2). These
+Some examples of other people who had their tracks next to one another on the dendogram are Hidde, Sanne, and Ellen. When checking, Ellen's track were both AI generated, Sanne's track were not AI generated, and Hidde's tracks had one AI generated and one not. This is so incredibly interesting to me. There are no conclusions to be drawn as to why some people's tracks sound so similar to one another that their tracks are grouped together. It could be because they composed both so they sound the same due to an 'artistic signature'. AI generated songs sounding the same could make sense if the program was asked to generated two songs using the same request. But what's even more interesting is that even for one AI generated track and one composed, they still were grouped together! I'd love to ask that person in the class if they had requested something specific from AI that would resemble what they wrote themselves, or if they fed their song for the AI to learn from as an example. But how fascinating that we have three people who's two tracks were linked together, with three different types of song pairs. It really shows that 'AI generated songs all sound the same' doesn't necessarily apply in this corpus.
 
 ### Will a heatmap help clarify things?
 
@@ -649,7 +647,10 @@ heatmaply(
 
 ***
 
-Fill in
+Valence and arousal being most correlated makes a lot of sense. When looking at the first class corpus visualisation I drew, they had an upwards correlation to one another. Then it is linked to danceability. Although less clear then as valence and arousal, danceability had also a bit of a trend in the first visualisation, the dots getting lighter as they went up the trend.
+
+What I think is particularly to note is that instrumentalness was not grouped with danceability, arousal, or valence. This would makes the most sense to me, as instrumentalness could correlated with energy which are an important factor for the other three Essentia. Instead, it was grouped with tempo. When I took a closer look at the corpus, I couldn't personally find a real trend between the two. Most of the 154bpm tracks did sit on the higher instrumentalness but there were also some 60bpm there so I'm not convinced.
+
 
 ### Here are some final thoughts about everything we have investigated.
 
@@ -668,9 +669,16 @@ compmus2025_filtered |>
     size = "Danceability",
     colour = "AI"
   )
+ggplotly()
 ```
 
 
 ***
 
-Fill in.
+Let's come full circle with the same class corpus visualisation from the start, this time showing what was AI generated or not.
+
+In the end, I had really expected to be able to draw some strong claims about how you can truly, always tell when music is AI generated. "It's repetitive/sounds the same" or "AI music has no artistic soul" are things people often claim, and something I thought I believed strongly in. However, I am not too sure if people were given these statistics if they could draw many conclusions. Both the composed and AI generated tracks have a wide range of bpm, danceability, valence, and arousal. My tracks sit bottom left, the only section that contains only non-AI music, though there are only 5 tracks. The only conclusion you could draw is that AI music tends to sit higher in arousal and valence (probably due to it being mostly pop music based). I would love to see if someone would go through these tracks and humanly correct any errors (such as miscalculated tempos) whether we could see a trend emerge or not.
+
+Although I am sure someone could tell AI generated music if they listened to it, I think there is nothing we can clearly point to in statistics.
+
+In the end, I thought it was really amazing to see what graphs I could come up with for tracks which I didn't believe had a tempo or key. I feel like I got to learn more about my own music and how it can be perceived by others (or by a computer)! I will now go and do this to a bunch of my other music and see where things get accurate and where things are not. Who knows? Maybe I will even start using AI as a tool to compose with (although maybe first secure my music composition bachelor before they accuse me of AI plagiarism).
