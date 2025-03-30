@@ -181,8 +181,8 @@ compmus2025 |>                   # Start with the data
   labs(                       # Make the titles nice.
     x = "Valence",
     y = "Arousal",
-    colour = "Danceability",
-    size = "Tempo"
+    colour = "Tempo",
+    size = "Danceability"
   )
 ggplotly()
 ```
@@ -191,9 +191,9 @@ ggplotly()
 
 Here we have a visualization of the class corpus. There is this upward corresponding trend between valence, arousal and danceability. This is seen in the upwards going line and the dots getting lighter and lighter in colour. 
 
-My first track is the furtherest dot on the bottom left. It ranks lowest for valence and arousal at 3.1 and 3.4 accordingly. It's tempo is also marked as 30 bpm and the danceability is at 0.1, both some of the lowest in the corpus as well. As it is a melodic contemporary piece, it makes a lot of sense. I also use a lot of alternating and changing time signatures which was meant to purposefully make the listener lose the pulse (similar as to walking on a boat, tripping over your own feet as the boat sways unevenly). Although the bpm is incorrect, for the rest I would agree with Essentia.
+My first track is the furtherest dot on the bottom left. It ranks lowest for valence and arousal at 3.1 and 3.4 accordingly. It's tempo is also marked as 154 bpm and the danceability is at 0.1 (one of the lowest in the corpus as well). As it is a melodic contemporary piece, it makes a lot of sense. I also use a lot of alternating and changing time signatures which was meant to purposefully make the listener lose the pulse (similar as to walking on a boat, tripping over your own feet as the boat sways unevenly). Although the bpm is incorrect, for the rest I would agree with Essentia.
 
-For my second track, it ranked a little higher. 3.8 for arousal and 3.7 for valence. For arousal it ranks in the low region of the corpus, and for valence it is third worst (with my first track being the worst). This time, Essentia computed the bpm for 144bpm. Since it is an atmospheric piece made of a collection of sound, there was no bpm to begin with. I find it interesting that there managed to be enough spikes in energy that were regular for a bpm to be determined. I do think 144bpm is quite fast well you listen to the piece. For danceability, surprisingly, it ends up in the middle of the corpus with 0.34. The track falls perfectly on the trend line, the very first in the bottom left. I do think that even though this track was made to be performed on, I did not believe it would be considered high in danceability in the way Essentia has determined danceability to be. I believe instead that this danceability was affected by the measured bpm which is very high, but not very realistic.
+For my second track, it ranked a little higher. 3.8 for arousal and 3.7 for valence. For arousal it ranks in the low region of the corpus, and for valence it is third worst (with my first track being the worst). This time, Essentia computed the bpm for 154bpm. Since it is an atmospheric piece made of a collection of sound, there was no bpm to begin with. I find it interesting that there managed to be enough spikes in energy that were regular for a bpm to be determined. I do think 154bpm is quite fast well you listen to the piece. For danceability, surprisingly, it ends up in the middle of the corpus with 0.34. The track falls perfectly on the trend line, the very first in the bottom left. I do think that even though this track was made to be performed on, I did not believe it would be considered high in danceability in the way Essentia has determined danceability to be. I believe instead that this danceability was affected by the measured bpm which is very high, but not very realistic.
 
 Both my pieces, although very different from each other, are very far from a pop song. These features tend to be computed best with Western pop music so it makes sense that they both rank very low on most features. Essentia did managed to identify that they stand out from the rest of the corpus, especially from the AI generated songs which usually use these typical pop features and therefore can be computed more accurately and highly.
 
@@ -288,7 +288,7 @@ I find this interesting because the piece does include a lot of repeats yet the 
 
 ------------------------------------------------------------------------
 
-Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. At around 150, there is a darker chunk. Fill in.
+Here we see the same thing happen as with the chromagram where the novelty in yellow comes in when the instrument starts. It also creates a homogeneity square at around 80 and 110. I believe I have managed to link this to moments where a note struck will ring out with reverb, creating a moment of exact repeat. At around 150, there is a darker chunk. Through this representation, I realised that I had copy and pasted a section again, with the same notes ringing out with the same reverb. Although the playing seems improvised, when I look back into my DAW, I see that the original audio file I used wasn't long enough so I reused a part of the beginning. This explains why there are similarities between the sections at 80 and 110 compared to 150.
 
 
 LOUDNESS {.storyboard}
@@ -307,7 +307,7 @@ LOUDNESS {.storyboard}
 
 ***
 
-Fill in.
+This graph is fantastic at showing when the chords arrive to accompany the main ostinato. The first very big spike comes from when the saxophones shift from the first section to the second. This shows how the energy increases suddenly when the notes increase due to the arpeggios. The small peaks between the two big ones aligned really well with the start of each phrase. Since I let my performers have moments to breathe in between the arpeggios, it creates a mini spike at the start of each phrase. The final big spike comes from the three large open fifths "horn" noises at the end. The repeats are denoted by the small two subsequent spikes.
 
 ### The previous track was acoustic and the recording came from a concert hall. I wonder how an electronic piece differs.
 
@@ -323,7 +323,7 @@ Fill in.
 
 ***
 
-Fill in.
+This electronic piece shows a lot more spikes in energy. This is very interesting as it is primarily an accompanying piece for a performance. The sounds I elected to use like trains or wind have a lot of dynamism in their nature. I believe that is what leads to all the spiking. When the instrument comes in around 65, the peaks become less elevated. This could be thanks to the reverb which softens the changes of energy. The instruments fades out around 160 seconds. This time, the spikes are less prevalent leading me to think it was the wind noises at the start that were the most unpredictable. I am curious about the final spike at the end, since my piece ends on a fade out.
 
 
 TIMBRE {.storyboard}
@@ -347,7 +347,7 @@ TIMBRE {.storyboard}
 
 ***
 
-Fill in
+If we look at the first level, we see a darker section from the start - this clearly denotes the ostinato. Then lighter sections appear, the chords, before returning to the darker solo ostinato. At around 120, the colour is primarily yellow, indicating new material. This is interesting because like I have stated before, the repeats in my piece aren't seen as repeats in most of the graphs. I believe a part of it is that it is a live performance so there are fluctuations in the repeats from human error. There are three final strips at the end, indicating the last three open fifths.
 
 ### More mysteries to uncover in this cepstrogram too.
 
@@ -367,7 +367,7 @@ Fill in
 
 ***
 
-Fill in
+This cepstrogram follows the trend we tend to see with timbre for this piece. Overall, it is very homogenous, despite its varying sounds. On level 3, we see the structure of the instrument coming in and out (the lighter section). This is the same on the level 5.
 
 ### A Self-Similarity Matrix just like we saw before, but this time let's look at timbre.
 
@@ -478,7 +478,10 @@ The keygram seems to be very confused as to what the key could be. This makes se
 ```
 
 ***
-Fill in
+
+I am not too sure that a chordogram is appropriate for this kind of piece. It makes sense that we cannot glimpse any true chords from the found sounds sections at the beginning and ends of the piece. What I find interesting is that the instrument in the middle plays a single note. However, it has really huge overtones and I added a lot of reverb and delay, which does give some harmony. It is a questions of what chords it does not emulate, rather than which it does. Mostly, the chords that it left out contain a B, a note that is not present then in the notes and overtones of the instrument. 
+
+A lot of chords that use Ab are left out, so I believe that means we can interpret the most higlighted note on the chordogram as a G# rather than an Ab.
 
 
 ### What key are train tracks in?
@@ -500,7 +503,7 @@ Fill in
 
 ***
 
-Fill in
+Similarly to the chordogram, the piece is accurately understood as keyless (just as how I though when I composed it). At 150, just as with the chordogram, we have the strongest indication of key. I do see the note B present in a lot of the keys, although Ab does remain unpresent. I wasn't able to make sense of why some keys were highlighted whilst others not. It could be that because only mostly a G# was higlighted on the chromagram, it leaves the posibility open for a lot of keys, as long as they would contain a G#.
 
 
 TEMPO {.storyboard}
@@ -562,7 +565,7 @@ This piece shows a more regular tempo overall compared to piece 1. It is electro
 
 ***
 
-The cyclic tempogram shows tempos that vary wildly from one second to the next rangin from 85bpm to 145bpm. At the very end, despite the three long chords I have composed, the tempogram interprets this as even higher that 145bpm, which is fascinating. It must be very confused by the sudden slowness that it compensates by subdividing. At 140 seconds, the tempo drops from very high to very low. Since the bulk of the middle part are arppegios following the 8th notes of the piece, I believe it is the time signature changes that gets it to be confused as to where the one is. This is why the tempo doesn't stay regular despite it being a very stable part of the piece. I'm very surprised with the cyclic tempogram that there is so much noise surrounding it since there isn't that much noise in the standard tempogram.
+The cyclic tempogram shows tempos that vary wildly from one second to the next ranging from 85bpm to 145bpm. At the very end, despite the three long chords I have composed, the tempogram interprets this as even higher that 145bpm, which is fascinating. It must be very confused by the sudden slowness that it compensates by subdividing. At 140 seconds, the tempo drops from very high to very low. Since the bulk of the middle part are arppegios following the 8th notes of the piece, I believe it is the time signature changes that gets it to be confused as to where the one is. This is why the tempo doesn't stay regular despite it being a very stable part of the piece. I'm very surprised with the cyclic tempogram that there is so much noise surrounding it since there isn't that much noise in the standard tempogram.
 
 
 ### And here's a cyclic tempogram for my second track.
@@ -591,8 +594,7 @@ compmus2025 |> ggplot(aes(x = tempo)) + geom_histogram(binwidth = 10)
 
 ***
 
-Situate your tracks
-
+My two tracks were ultimately classified both at 154. What is interesting is that it belongs to the most popular tempo for tracks. Both my tracks are not 154, my first track is marked as 60 bpm on the sheet music and my second track has no tempo (it would not make sense). What's interesting is that they are very different from one another in style, but got grouped into one tempo. 154bpm is also a bpm that is very high, most songs are not in this range. This leads me to question how accurate this all is. The bpm Essentia chose don't reflect what happened in the (cyclic) tempograms neither. What makes this all the more confusing is that the songs at 154bpm are split 50/50 with whether it is AI or not. This makes it all the more intriguing about why this tempo is so popular (I would've though AI tracks would be all in the same range, but instead the AI song tempos span the whole range from 60 to 154 bpm).
 
 CONCLUSION {.storyboard}
 =========================================
@@ -619,14 +621,20 @@ cluster_juice <-
   column_to_rownames("filename")
 compmus_dist <- dist(cluster_juice, method = "euclidean")
 compmus_dist |> 
-  hclust(method = "single") |> # Try single, average, and complete.
+  hclust(method = "complete") |> # Try single, average, and complete.
   dendro_data() |>
   ggdendrogram()
 ```
 
 ***
 
-Fill in
+This is super interesting. I tried doing different kinds of clustering, but found out that when using the 'single' method, my track ended up both being clustered all the way to the left.
+
+My second track, the atmospheric track, despite being created electronically ended up being the furtherest track in similarirty to the rest of the class corpus. My first track, the saxophone quartet, was linked to some other tracks but is still quite seperate from most of the corpus. Due to its tempo similarities with other tracks and instrumentalness, it might have been linked to some other acoustic pieces.
+
+I also notice that another person has had their tracks seperated from the rest similarly to me. Sanne-1 and sanne-2 are all the way on the right, although both tracks are thought to be similar to onee another but not to the rest.
+
+Most of the clustering in the middle are of the AI generated songs, whilst the tracks on the edges are composed music. A lot of people's two tracks are similar enough to one another that get clustered together (such as ellen-1 and ellen-2, thomas-1 and thomas-2 or santiago-1 and santiago-2). These
 
 ### Will a heatmap help clarify things?
 
@@ -644,5 +652,25 @@ heatmaply(
 Fill in
 
 ### Here are some final thoughts about everything we have investigated.
+
+```{r}
+compmus2025_filtered <- 
+  compmus2025 |> filter(!is.na(ai)) |> 
+  mutate(ai = factor(if_else(ai, "AI", "Non-AI")))
+
+compmus2025_filtered |>
+  ggplot(aes(x = valence, y = arousal, colour = ai, size = tempo)) +
+  geom_point(alpha = 0.8) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Valence",
+    y = "Arousal",
+    size = "Danceability",
+    colour = "AI"
+  )
+```
+
+
+***
 
 Fill in.
